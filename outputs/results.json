@@ -1,0 +1,407 @@
+{
+ "seed": 42,
+ "device": "mps",
+ "versions": {
+  "python": "3.9.6",
+  "torch": "2.8.0",
+  "torchvision": "0.23.0",
+  "numpy": "2.0.2",
+  "pandas": "2.3.3",
+  "sklearn": "1.6.1"
+ },
+ "config": {
+  "img": 224,
+  "batch": 64,
+  "max_epochs": 3,
+  "patience": 3,
+  "lr": 0.0003,
+  "weight_decay": 0.0001,
+  "run_threshold": 0.8,
+  "merge_threshold": 0.98
+ },
+ "n_images": 12446,
+ "n_pseudo_studies": 195,
+ "loo_1nn_pixel_acc": 0.9999196529005303,
+ "leak_audit": {
+  "random split": {
+   "test slices with a near-duplicate in train (%)": 99.04,
+   "median best correlation to train": 1.0,
+   "1-NN pixel accuracy on test (%)": 99.95,
+   "1-NN pixel Stone recall (%)": 100.0
+  },
+  "grouped split": {
+   "test slices with a near-duplicate in train (%)": 0.0,
+   "median best correlation to train": 0.83,
+   "1-NN pixel accuracy on test (%)": 40.92,
+   "1-NN pixel Stone recall (%)": 40.09
+  }
+ },
+ "results": {
+  "A_random": {
+   "model": "resnet18",
+   "split": "random",
+   "class weights": true,
+   "test acc %": 95.07230851633636,
+   "macro-F1 %": 94.20313979073605,
+   "Stone recall %": 96.13526570048309,
+   "Stone recall 95% CI": "92.6-98.0",
+   "Stone precision %": 85.40772532188842,
+   "Normal recall %": 94.22572178477691,
+   "Cyst recall %": 98.56115107913669,
+   "Tumor recall %": 90.64327485380117,
+   "study-level acc %": 95.6989247311828,
+   "test studies": 186,
+   "test slices": 1867,
+   "best epoch": 3,
+   "train min": 1.607970150311788,
+   "params (M)": 11.178564
+  },
+  "B_grouped": {
+   "model": "resnet18",
+   "split": "grouped",
+   "class weights": true,
+   "test acc %": 80.27176648213387,
+   "macro-F1 %": 69.74473003392883,
+   "Stone recall %": 95.04504504504504,
+   "Stone recall 95% CI": "91.3-97.2",
+   "Stone precision %": 58.611111111111114,
+   "Normal recall %": 89.47368421052632,
+   "Cyst recall %": 93.86503067484662,
+   "Tumor recall %": 18.412698412698415,
+   "study-level acc %": 71.875,
+   "test studies": 32,
+   "test slices": 1987,
+   "best epoch": 3,
+   "train min": 1.6230361183484396,
+   "params (M)": 11.178564
+  },
+  "C_grouped_noweights": {
+   "model": "resnet18",
+   "split": "grouped",
+   "class weights": false,
+   "test acc %": 79.26522395571213,
+   "macro-F1 %": 65.91182046523517,
+   "Stone recall %": 90.54054054054055,
+   "Stone recall 95% CI": "86.0-93.7",
+   "Stone precision %": 67.4496644295302,
+   "Normal recall %": 91.72932330827066,
+   "Cyst recall %": 95.24539877300614,
+   "Tumor recall %": 6.666666666666667,
+   "study-level acc %": 68.75,
+   "test studies": 32,
+   "test slices": 1987,
+   "best epoch": 3,
+   "train min": 1.5344435652097066,
+   "params (M)": 11.178564
+  },
+  "D_mobilenet": {
+   "model": "mobilenet_v3_small",
+   "split": "grouped",
+   "class weights": true,
+   "test acc %": 44.23754403623553,
+   "macro-F1 %": 36.799766152460315,
+   "Stone recall %": 68.01801801801801,
+   "Stone recall 95% CI": "61.6-73.8",
+   "Stone precision %": 18.303030303030305,
+   "Normal recall %": 8.145363408521304,
+   "Cyst recall %": 91.41104294478528,
+   "Tumor recall %": 21.26984126984127,
+   "study-level acc %": 40.625,
+   "test studies": 32,
+   "test slices": 1987,
+   "best epoch": 3,
+   "train min": 0.39628358284632365,
+   "params (M)": 1.521956
+  }
+ },
+ "confusion": {
+  "A_random": [
+   [
+    718,
+    13,
+    24,
+    7
+   ],
+   [
+    0,
+    548,
+    8,
+    0
+   ],
+   [
+    0,
+    8,
+    199,
+    0
+   ],
+   [
+    19,
+    11,
+    2,
+    310
+   ]
+  ],
+  "B_grouped": [
+   [
+    714,
+    1,
+    82,
+    1
+   ],
+   [
+    0,
+    612,
+    35,
+    5
+   ],
+   [
+    0,
+    11,
+    211,
+    0
+   ],
+   [
+    86,
+    139,
+    32,
+    58
+   ]
+  ],
+  "C_grouped_noweights": [
+   [
+    732,
+    0,
+    66,
+    0
+   ],
+   [
+    1,
+    621,
+    27,
+    3
+   ],
+   [
+    1,
+    20,
+    201,
+    0
+   ],
+   [
+    173,
+    117,
+    4,
+    21
+   ]
+  ],
+  "D_mobilenet": [
+   [
+    65,
+    81,
+    570,
+    82
+   ],
+   [
+    0,
+    596,
+    37,
+    19
+   ],
+   [
+    0,
+    71,
+    151,
+    0
+   ],
+   [
+    5,
+    176,
+    67,
+    67
+   ]
+  ]
+ },
+ "history": {
+  "A_random": {
+   "epoch": [
+    1,
+    2,
+    3
+   ],
+   "train_loss": [
+    0.9576589418953195,
+    0.4589828472735697,
+    0.3850715070193104
+   ],
+   "train_acc": [
+    0.6125461254612546,
+    0.9188191881918819,
+    0.9529520295202952
+   ],
+   "val_loss": [
+    0.4311102330684662,
+    0.29579970240592957,
+    0.17964299023151398
+   ],
+   "val_acc": [
+    0.8644884841992502,
+    0.9041242635243707,
+    0.9528655597214784
+   ],
+   "val_macro_f1": [
+    0.8322113439767959,
+    0.8906719975646912,
+    0.9434477038270919
+   ],
+   "val_stone_recall": [
+    0.8106796116504854,
+    0.9223300970873787,
+    0.9368932038834952
+   ]
+  },
+  "B_grouped": {
+   "epoch": [
+    1,
+    2,
+    3
+   ],
+   "train_loss": [
+    0.9025812618371348,
+    0.44972120487566614,
+    0.3446989161219108
+   ],
+   "train_acc": [
+    0.6632173095014111,
+    0.9190968955785512,
+    0.9689557855126999
+   ],
+   "val_loss": [
+    1.266425371170044,
+    1.1225224733352661,
+    0.6282723546028137
+   ],
+   "val_acc": [
+    0.44174003107198345,
+    0.5018125323666494,
+    0.6970481615743138
+   ],
+   "val_macro_f1": [
+    0.3971060767830442,
+    0.4185728717913271,
+    0.6605692564877318
+   ],
+   "val_stone_recall": [
+    0.4975609756097561,
+    0.9317073170731708,
+    0.8048780487804879
+   ]
+  },
+  "C_grouped_noweights": {
+   "epoch": [
+    1,
+    2,
+    3
+   ],
+   "train_loss": [
+    0.8101118738541374,
+    0.37149580903806895,
+    0.29101869525599905
+   ],
+   "train_acc": [
+    0.6848541862652869,
+    0.9454374412041392,
+    0.9811853245531514
+   ],
+   "val_loss": [
+    1.0502451658248901,
+    0.8002432584762573,
+    0.47812575101852417
+   ],
+   "val_acc": [
+    0.5903676851372346,
+    0.6317969963749352,
+    0.7933713102019679
+   ],
+   "val_macro_f1": [
+    0.49403727005653403,
+    0.5309960259346569,
+    0.734508636648465
+   ],
+   "val_stone_recall": [
+    0.48292682926829267,
+    0.8878048780487805,
+    0.6390243902439025
+   ]
+  },
+  "D_mobilenet": {
+   "epoch": [
+    1,
+    2,
+    3
+   ],
+   "train_loss": [
+    1.249924699764485,
+    0.8331527697064354,
+    0.6958451207134932
+   ],
+   "train_acc": [
+    0.48071495766698025,
+    0.7789275634995296,
+    0.8099717779868297
+   ],
+   "val_loss": [
+    1.2746877670288086,
+    1.351153016090393,
+    1.3072291612625122
+   ],
+   "val_acc": [
+    0.3650958052822372,
+    0.35525634386328325,
+    0.39772138788192646
+   ],
+   "val_macro_f1": [
+    0.27119432403858235,
+    0.2816572091099936,
+    0.33885536326773136
+   ],
+   "val_stone_recall": [
+    0.11219512195121951,
+    0.526829268292683,
+    0.5073170731707317
+   ]
+  }
+ },
+ "misclassified_shown": [
+  {
+   "path": "data/kidney/Tumor/Tumor- (1065).jpg",
+   "group": 182
+  },
+  {
+   "path": "data/kidney/Normal/Normal- (558).jpg",
+   "group": 4
+  },
+  {
+   "path": "data/kidney/Tumor/Tumor- (1095).jpg",
+   "group": 184
+  },
+  {
+   "path": "data/kidney/Normal/Normal- (556).jpg",
+   "group": 4
+  },
+  {
+   "path": "data/kidney/Tumor/Tumor- (1063).jpg",
+   "group": 182
+  },
+  {
+   "path": "data/kidney/Tumor/Tumor- (1097).jpg",
+   "group": 184
+  },
+  {
+   "path": "data/kidney/Cyst/Cyst- (56).jpg",
+   "group": 51
+  },
+  {
+   "path": "data/kidney/Cyst/Cyst- (3036).jpg",
+   "group": 96
+  }
+ ]
+}
